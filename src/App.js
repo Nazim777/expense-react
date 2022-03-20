@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import Expense from "./components/Expenses/Expense";
+import NewExpense from "./components/NewExpense/NewExpense";
 
-function App() {
+
+let dummy__expense =[
+ 
+]
+
+
+const App = () => {
+  const[expense, setexpense]= useState( dummy__expense)
+ 
+
+ const parentdata =(importparentdata)=>{
+   const updateddata =[importparentdata,...expense];
+   setexpense(updateddata);
+ };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+     <div>
+          <NewExpense parentdata1 = {parentdata}/>
+       <Expense item={expense} />
+     </div>
+     
+   
+  )
 }
 
-export default App;
+export default App
